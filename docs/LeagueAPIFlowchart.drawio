@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="0QCSyrJDXA1N3xSMmAS7">
+    <mxGraphModel dx="774" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Receive Riot ID from user" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Use HTTP to access Riot API" vertex="1">
+          <mxGeometry height="60" width="120" x="250" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-3" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="180" y="179.5" as="sourcePoint" />
+            <mxPoint x="230" y="179.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Receive Riot ID from user" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-5" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="119.5" y="100" as="sourcePoint" />
+            <mxPoint x="119.5" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-6" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="380" y="179.5" as="sourcePoint" />
+            <mxPoint x="430" y="179.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Use Google Gson to extract the data" vertex="1">
+          <mxGeometry height="60" width="120" x="440" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Return the data to the user in a readable format" vertex="1">
+          <mxGeometry height="60" width="120" x="610" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Hd8-AIYNSCkQxJNhBBhx-10" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="560" y="179.5" as="sourcePoint" />
+            <mxPoint x="610" y="179.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
