@@ -1,8 +1,16 @@
+import java.io.IOException;
 import java.util.Scanner;
+import java.net.http.HttpClient;
+import java.net.URI;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 public class Main {
     public static void main(String[] args) {
-        String name;
-        String tag;
+        HttpClient client = HttpClient.newBuilder()
+                .build();
+
+        String name = "";
+        String tag = "";
         Scanner scanner = new Scanner(System.in);
         String ID;
         boolean run = true;
@@ -20,6 +28,19 @@ public class Main {
                 System.out.println("Invalid Riot ID");
             }
 
+        }
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"+name+"/"+tag))
+                .header("X-Riot-Token", System.getenv("RIOT_API_KEY"))
+                .GET()
+                .build();
+        HttpResponse<String> response;
+        try {
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.statusCode());
+            System.out.println(response.body());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
 
     }
