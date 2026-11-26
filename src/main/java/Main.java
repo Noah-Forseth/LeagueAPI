@@ -4,8 +4,10 @@ import java.net.http.HttpClient;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import com.google.gson.Gson;
 public class Main {
     public static void main(String[] args) {
+        Gson gson = new Gson();
         HttpClient client = HttpClient.newBuilder()
                 .build();
 
@@ -37,8 +39,12 @@ public class Main {
         HttpResponse<String> response;
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.statusCode());
-            System.out.println(response.body());
+            //System.out.println(response.statusCode());
+            //System.out.println(response.body());
+            Account account = gson.fromJson(response.body(), Account.class);
+            System.out.println(account.puuid);
+            System.out.println(account.tagLine);
+            System.out.println(account.gameName);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
