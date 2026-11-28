@@ -31,20 +31,31 @@ public class Main {
             }
 
         }
-        HttpRequest request = HttpRequest.newBuilder()
+        HttpRequest playerRequest = HttpRequest.newBuilder()
                 .uri(URI.create("https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"+name+"/"+tag))
                 .header("X-Riot-Token", System.getenv("RIOT_API_KEY"))
                 .GET()
                 .build();
-        HttpResponse<String> response;
+        HttpRequest rankedRequest;
+        HttpResponse<String> playerResponse;
+        HttpResponse<String> rankedResponse;
         try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            //System.out.println(response.statusCode());
-            //System.out.println(response.body());
-            Account account = gson.fromJson(response.body(), Account.class);
-            System.out.println(account.puuid);
-            System.out.println(account.tagLine);
-            System.out.println(account.gameName);
+            playerResponse = client.send(playerRequest, HttpResponse.BodyHandlers.ofString());
+            Account account = gson.fromJson(playerResponse.body(), Account.class);
+            rankedRequest = HttpRequest.newBuilder()
+                    .uri(URI.create("https://na1.api.riotgames.com/lol/league/v4/entries/by-puuid/" + account.puuid))
+                    .header("X-Riot-Token", System.getenv("RIOT_API_KEY"))
+                    .GET()
+                    .build();
+            rankedResponse = client.send(rankedRequest, HttpResponse.BodyHandlers.ofString());
+            RankedInfo[] rankedInfoArray = gson.fromJson(rankedResponse.body(), RankedInfo[].class);
+            for (int i = 0; i < rankedInfoArray.length; i++) {
+                if (rankedInfoArray[i].queueType.equals("RANKED_SOLO_5x5")) {
+                    System.out.println(name + " is ranked " + rankedInfoArray[i].tier + " " + rankedInfoArray[i].rank
+                    + " with " + rankedInfoArray[i].leaguePoints + " LP. " + name + " has " + rankedInfoArray[i].wins
+                    + " wins and " + rankedInfoArray[i].losses + " losses.");
+                }
+            }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
